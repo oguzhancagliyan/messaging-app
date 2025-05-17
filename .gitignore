@@ -1,6 +1,3 @@
-# If you prefer the allow list template instead of the deny list, see community template:
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
 # Binaries for programs and plugins
 *.exe
 *.exe~
@@ -13,13 +10,53 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+*.coverprofile
 
-# Dependency directories (remove the comment below to include it)
+# Dependency directories
 # vendor/
 
 # Go workspace file
 go.work
 go.work.sum
 
-# env file
+# Go modules cache
+/pkg/
+/bin/
+
+# Env files
 .env
+.env.*
+
+# IDE/editor configs
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+*.log.*
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Swagger UI build artifacts (optional, if you include prebuilt UI files)
+static/swagger/swagger-ui*.js*
+static/swagger/swagger-ui*.map
+static/swagger/index.html
+static/swagger/swagger-initializer.js
+static/swagger/oauth2-redirect.html
+static/swagger/favicon*.png
+static/swagger/index.css
+static/swagger/swagger-ui.css*
+static/swagger/*.js
+
+# Docker
+docker-compose.override.yml
+*.pid
+
+# Coverage
+coverage.out
+
+# GitHub Codespaces
+.devcontainer/
