@@ -1,0 +1,111 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/messages/sent": {
+            "get": {
+                "description": "Retrieves the list of sent messages",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Get sent messages",
+                "responses": {
+                    "200": {
+                        "description": "List of sent messages",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.Message"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to fetch sent messages",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/start": {
+            "post": {
+                "description": "Starts the message dispatcher",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "text/plain"
+                ],
+                "tags": [
+                    "Dispatcher"
+                ],
+                "summary": "Start the dispatcher",
+                "responses": {
+                    "200": {
+                        "description": "Dispatcher started",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/stop": {
+            "post": {
+                "description": "Stops the message dispatcher",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "text/plain"
+                ],
+                "tags": [
+                    "Dispatcher"
+                ],
+                "summary": "Stop the dispatcher",
+                "responses": {
+                    "200": {
+                        "description": "Dispatcher stopped",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.Message": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "sent": {
+                    "type": "boolean"
+                },
+                "sentAt": {
+                    "type": "string"
+                },
+                "to": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
