@@ -1,0 +1,71 @@
+definitions:
+  model.Message:
+    properties:
+      content:
+        type: string
+      createdAt:
+        type: string
+      id:
+        type: integer
+      sent:
+        type: boolean
+      sentAt:
+        type: string
+      to:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /messages/sent:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves the list of sent messages
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of sent messages
+          schema:
+            items:
+              $ref: '#/definitions/model.Message'
+            type: array
+        "500":
+          description: Failed to fetch sent messages
+          schema:
+            type: string
+      summary: Get sent messages
+      tags:
+      - Messages
+  /start:
+    post:
+      consumes:
+      - application/json
+      description: Starts the message dispatcher
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: Dispatcher started
+          schema:
+            type: string
+      summary: Start the dispatcher
+      tags:
+      - Dispatcher
+  /stop:
+    post:
+      consumes:
+      - application/json
+      description: Stops the message dispatcher
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: Dispatcher stopped
+          schema:
+            type: string
+      summary: Stop the dispatcher
+      tags:
+      - Dispatcher
+swagger: "2.0"

@@ -1,19 +1,22 @@
-FROM golang:1.23 AS builder
+FROM golang:1.23-alpine AS builder
+WORKDIR /src
 
-WORKDIR /app
+RUN go install github.com/swaggo/swag/cmd/swag@latest
 
 COPY go.mod go.sum ./
-RUN go mod tidy && go mod download
+RUN go mod download
 
 COPY . .
 
+RUN swag init -g cmd/main.go -o ./docs
+
 RUN CGO_ENABLED=0 GOOS=linux go build -o messaging-app ./cmd/main.go
 
-FROM alpine:latest
 
-WORKDIR /root/
-COPY --from=builder /app/messaging-app .
+FROM alpine:latest
+WORKDIR /app
+
+COPY --from=builder /src/messaging-app .
 
 EXPOSE 8080
-
 CMD ["./messaging-app"]

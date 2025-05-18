@@ -62,7 +62,7 @@ messaging-app/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/messaging-app.git
+git clone https://github.com/oguzhancagliyan/messaging-app.git
 cd messaging-app
 ```
 

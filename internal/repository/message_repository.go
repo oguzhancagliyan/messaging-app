@@ -28,7 +28,7 @@ func NewMessageRepository(db *sql.DB) *messageRepository {
 
 func (r *messageRepository) GetSentMessages(ctx context.Context, limit int) ([]model.Message, error) {
 	query := `
-        SELECT id, to, content, sent, sent_at, created_at
+        SELECT id, "to", content, sent, sent_at, created_at
         FROM messages
         WHERE sent = TRUE
         ORDER BY sent_at DESC
@@ -63,12 +63,12 @@ func (r *messageRepository) GetSentMessages(ctx context.Context, limit int) ([]m
 func (r *messageRepository) GetUnsentMessages(ctx context.Context, limit int) ([]model.Message, error) {
 
 	query := `
-        SELECT id, to, content, sent, sent_at, created_at
-        FROM messages
-        WHERE sent = FALSE
-        ORDER BY created_at ASC
-        LIMIT $1
-    `
+    SELECT id, "to", content, sent, sent_at, created_at
+    FROM messages
+    WHERE sent = FALSE
+    ORDER BY sent_at DESC
+    LIMIT $1
+`
 	rows, err := r.db.QueryContext(ctx, query, limit)
 
 	if err != nil {
