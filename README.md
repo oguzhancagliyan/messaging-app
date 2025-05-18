@@ -135,8 +135,6 @@ The following components are interface-based and easily mockable:
 * `cache.Cache`
 * `service.MessageService`
 
-You can write tests using Go's `testing` package.
-
 ---
 
 ## 📉 Notes
@@ -146,14 +144,3 @@ You can write tests using Go's `testing` package.
 * This project requires Go 1.23+ due to `fiber/v2`
 
 ---
-
-## 👨‍💼 Author
-
-Developed by **Oguzhan Cağlıyan**
-[LinkedIn](https://www.linkedin.com/in/...) | [GitHub](https://github.com/...)
-
----
-
-## 🚪 License
-
-This project is licensed under the [MIT License](./LICENSE).
